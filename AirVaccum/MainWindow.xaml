@@ -1,0 +1,44 @@
+﻿<Window x:Class="AirVaccum.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirVaccum"
+        xmlns:chart1="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+  
+    <Grid>
+        
+        <chart1:SfChart x:Name="Chart" Margin="0,20,20,0" AreaBorderThickness="0,1,1,1">
+            
+            <!--<chart1:SfChart.DataContext>
+                <local:ViewModelBase/>
+            </chart1:SfChart.DataContext>-->
+            <chart1:SfChart.PrimaryAxis>
+                <chart1:TimeSpanAxis>
+                    <chart1:ChartAxis.Header>
+                        <TextBlock Margin="10" Text="Time(Sec)" FontSize="16" FontFamily="SegoeUI"/>
+                    </chart1:ChartAxis.Header>
+                </chart1:TimeSpanAxis>
+            </chart1:SfChart.PrimaryAxis>
+
+            <chart1:SfChart.SecondaryAxis>
+                <chart1:NumericalAxis>
+                    <chart1:ChartAxis.Header>
+                        <TextBlock Margin="10" Text="Head(m)" FontSize="16" FontFamily="SegoeUI"/>
+                    </chart1:ChartAxis.Header>
+                </chart1:NumericalAxis>
+            </chart1:SfChart.SecondaryAxis>
+            
+
+            <chart1:FastLineBitmapSeries  XBindingPath="Time" YBindingPath="SDO2"
+                                      StrokeThickness="1" 
+                                        ItemsSource="{Binding Path=ChartData,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <!--<chart1:FastLineBitmapSeries EnableAntiAliasing="False" Label="Second" x:Name="sfchart1"
+                                        XBindingPath="Date" YBindingPath="Value1" 
+                                        LegendIcon="SeriesType"   StrokeThickness="1"
+                                        ItemsSource="{Binding ChartData}"/>-->
+             </chart1:SfChart>
+    </Grid>
+</Window>
